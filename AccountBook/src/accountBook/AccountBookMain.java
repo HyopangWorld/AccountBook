@@ -1,0 +1,10 @@
+package accountBook;
+
+import java.io.IOException;
+import java.sql.SQLException;
+
+public class AccountBookMain {
+	public static void main(String[] args) throws IOException, NumberFormatException, SQLException {
+		new Login();
+	}
+}
