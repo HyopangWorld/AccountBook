@@ -1,0 +1,63 @@
+package src.Exam;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+class JDBCExam{
+	Connection connection;
+	Statement statment;
+	ResultSet resultSet;
+	
+	String driverName = "org.gjt.mm.mysql.Driver";
+	String url = "jdbc:mysql://localhost:3306/calender";
+	String user = "calender";
+	String password = "calender";
+	
+	public JDBCExam(){
+		try{
+			Class.forName(driverName);
+		}
+		catch (ClassNotFoundException e){
+			System.out.println("[로드 오류]\n" + e.getStackTrace());
+		}
+	}
+	
+	public int productInsert(String p_date, int p_in, int p_out){
+		int resultValue = 0;
+
+		try{
+			String queryString = "INSERT INTO calender VALUES (" + p_date + ", " + p_in + ", " + p_out + ")";
+
+			// ② 연결 [Connection]
+			connection = DriverManager.getConnection(url, user, password);
+
+			// ② 연결 [Statement]
+			statment = connection.createStatement();
+
+			// ③ 실행 [CRUD]
+			resultValue = statment.executeUpdate(queryString);
+		}
+		catch (SQLException e){
+			System.out.println("[쿼리 오류]\n" + e.getStackTrace());
+		}finally{
+			// ④ 닫기
+			//closeDatabase();
+		}
+		return resultValue;
+	}
+}
+
+public class Exam {
+	public static void main(String[] args) {
+//		Calendar cal = Calendar.getInstance();
+//		java.sql.Connection conn = java.sql.DriverManager.getConnection("calender", "calender", "calender");
+//		java.sql.Statement stmt = conn.createStatement();
+//		stmt.executeQuery("select * from calender where date=0000-00-00");
+		JDBCExam jdbcExam = new JDBCExam();
+		jdbcExam.productInsert("20171019", 2000, 1000);
+	}
+
+}

@@ -1,0 +1,20 @@
+package accountBook;
+
+import java.awt.Button;
+import java.io.IOException;
+import java.sql.SQLException;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+public class UserInfo{
+	public UserInfo(String id){
+		String queryUserId = "select u_id from user_info where="+id;
+		String queryClub = "select club_name from user_info where="+id;
+		String queryClubMember = "select club_member from user_info where="+id;
+		
+		
+	}
+}
+

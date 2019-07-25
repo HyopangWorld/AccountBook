@@ -1,0 +1,38 @@
+package accountBook;
+
+import java.awt.Font;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+public class YCTotal extends JFrame{
+	public YCTotal(){
+		JPanel YCpanel = new JPanel();
+		YCpanel.setLayout(null);
+		
+		JLabel YTitleL = new JLabel("2017년 결산");
+		YTitleL.setBounds(20, 10, 400, 100);
+		YTitleL.setFont(new Font("나눔고딕코딩", Font.PLAIN, 40));
+		YCpanel.add(YTitleL);
+		
+		JLabel YtalOutL = new JLabel("연별 총 지출");
+		YtalOutL.setBounds(120, 0, 300, 60);
+		YtalOutL.setFont(new Font("나눔고딕코딩", Font.PLAIN, 20));
+		YCpanel.add(YtalOutL);
+		
+		JLabel YtalInL = new JLabel("연별 총 수입");
+		JLabel YtalBalanceL = new JLabel("연별 결산금액");
+		
+		setTitle("연별결산");
+		add(YCpanel);
+		setSize(500,650);
+		setLocation(450,100);
+		setVisible(true);
+	}
+	public static void main(String[] args) {
+		new YCTotal();
+
+	}
+
+}

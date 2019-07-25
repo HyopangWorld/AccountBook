@@ -1,0 +1,36 @@
+package accountBook;
+
+import java.awt.Button;
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.StringTokenizer;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+public class UserInfo{
+	static public String Idresult;
+	static public String Clubresult;
+	static public String Memberresult;
+	static public String Balresult;
+	public UserInfo(String id){
+		DB_Input dbInput = new DB_Input();
+		String queryUserId = "select u_id from user_info where id="+id;
+		String queryClub = "select club_name from user_info where id="+id;
+		String queryClubMember = "select club_member from user_info where id="+id;
+		String queryBalance = "select balance from user_info where id="+id;
+		
+		Idresult =dbInput.productSelect("getDuplicate", queryUserId);
+		System.out.println(Idresult);
+		Clubresult =dbInput.productSelect("getClub", queryClub);
+		System.out.println(Clubresult);
+		Memberresult =dbInput.productSelect("getClubMember", queryClubMember);
+		StringTokenizer st = new StringTokenizer(Memberresult,",");
+		while(st.hasMoreTokens()) { System.out.println(st.nextToken()); }
+		Balresult =dbInput.productSelect("getBalance", queryBalance);
+		System.out.println(Balresult);
+		
+	}
+}
+

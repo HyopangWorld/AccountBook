@@ -1,0 +1,71 @@
+package accountBook;
+
+import java.awt.Font;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import java.awt.Color;
+
+public class YCTotal extends JFrame{
+	public YCTotal(String id){
+		DB_Input ip = new DB_Input();
+		String[] inOrOut = ip.productSelect("getInOrOut", "select inOrout from Calender_info_"+id);
+		ip.productSelectArray("getMoney", queryString);
+		ip.productSelect("getBalance", queryString);
+		JPanel YCpanel = new JPanel();
+		YCpanel.setLayout(null);
+		
+		JLabel YTitleL = new JLabel("2017³â °á»ê");
+		YTitleL.setBounds(127, 12, 225, 90);
+		YTitleL.setFont(new Font("³ª´®°íµñÄÚµù", Font.PLAIN, 40));
+		YCpanel.add(YTitleL);
+		
+		JLabel YtalOutL = new JLabel("¿¬º° ÃÑ ÁöÃâ");
+		YtalOutL.setBounds(31, 273, 128, 60);
+		YtalOutL.setFont(new Font("³ª´®°íµñÄÚµù", Font.PLAIN, 20));
+		YCpanel.add(YtalOutL);
+		
+		JLabel YtalInL = new JLabel("¿¬º° ÃÑ ¼öÀÔ");
+		YtalInL.setBounds(31, 149, 128, 60);
+		YtalInL.setFont(new Font("³ª´®°íµñÄÚµù", Font.PLAIN, 20));
+		YCpanel.add(YtalInL);
+		
+		JLabel YtalBalanceL = new JLabel("¿¬º° °á»ê±Ý¾×");
+		YtalBalanceL.setBounds(31, 394, 140, 60);
+		YtalBalanceL.setFont(new Font("³ª´®°íµñÄÚµù", Font.PLAIN, 20));
+		YCpanel.add(YtalBalanceL);
+		
+		setTitle("¿¬º°°á»ê");
+		getContentPane().add(YCpanel);
+		
+		JLabel YtalIn = new JLabel("");
+		YtalIn.setFont(new Font("³ª´®°íµñÄÚµù", Font.PLAIN, 30));
+		YtalIn.setForeground(Color.BLUE);
+		YtalIn.setBackground(Color.WHITE);
+		YtalIn.setBounds(210, 165, 212, 83);
+		YCpanel.add(YtalIn);
+		
+		JLabel YtalOut = new JLabel("");
+		YtalOut.setForeground(Color.RED);
+		YtalOut.setFont(new Font("³ª´®°íµñÄÚµù", Font.PLAIN, 30));
+		YtalOut.setBackground(Color.WHITE);
+		YtalOut.setBounds(210, 283, 212, 83);
+		YCpanel.add(YtalOut);
+		
+		JLabel YtalBalance = new JLabel("");
+		YtalBalance.setForeground(new Color(46, 139, 87));
+		YtalBalance.setFont(new Font("³ª´®°íµñÄÚµù", Font.PLAIN, 30));
+		YtalBalance.setBackground(Color.WHITE);
+		YtalBalance.setBounds(210, 416, 212, 83);
+		YCpanel.add(YtalBalance);
+		
+		setSize(500,650);
+		setLocation(450,100);
+		setVisible(true);
+	}
+	public static void main(String[] args) {
+		new YCTotal("1");
+
+	}
+}

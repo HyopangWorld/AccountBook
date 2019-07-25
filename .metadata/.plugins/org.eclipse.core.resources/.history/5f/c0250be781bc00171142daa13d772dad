@@ -1,0 +1,20 @@
+package accountBook;
+import java.io.IOException; 
+import java.net.URI; 
+import java.net.URISyntaxException; 
+import java.awt.Desktop; 
+
+public class FBShare { 
+	public FBShare(){
+		try { 
+			Desktop.getDesktop().browse(new URI("https://accountbook-d2dc0.firebaseapp.com")); 
+			} catch (IOException e) {
+				e.printStackTrace(); 
+			} catch (URISyntaxException e) {
+				e.printStackTrace(); 
+			} 
+		}
+	}
+}
+
+
